@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+	<title>微商城线下验证后台</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="max-age=0" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="Description" content="微商城线下验证后台" />
+	<meta name="Keywords" content="微商城线下验证后台" />
+	<!-- basic styles -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+	<!--[if IE 7]>
+	  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+	<![endif]-->
+	<!-- page specific plugin styles -->
+	<!-- fonts -->
+	<!-- ace styles -->
+	<link rel="stylesheet" href="assets/css/ace.min.css" />
+	<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+	<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+
+	<!--[if lte IE 8]>
+	  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+	<![endif]-->
+
+	<!-- inline styles related to this page -->
+	<link rel="stylesheet" href="static/css/mod.base.css" />
+
+	<!-- ace settings handler -->
+
+	<script src="assets/js/ace-extra.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="navbar navbar-default" id="navbar">
+		<div class="navbar-container" id="navbar-container">
+			<div class="navbar-header pull-left">
+				<a href="#" class="navbar-brand">
+					<small>
+						微智 - 微商城							
+					</small>
+				</a><!-- /.brand -->
+			</div><!-- /.navbar-header -->
+
+			<div class="navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<li class="light-blue">
+						<a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
+							<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+							<span class="user-info">
+								<small>Welcome,</small>
+								王大伟
+							</span>
+
+							<i class="icon-caret-down"></i>
+						</a>
+
+						<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="#">
+									<i class="icon-cog"></i>
+									设置
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<i class="icon-user"></i>
+									个人资料
+								</a>
+							</li>
+
+							<li class="divider"></li>
+
+							<li>
+								<a href="#">
+									<i class="icon-off"></i>
+									退出
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul><!-- /.ace-nav -->
+			</div><!-- /.navbar-header -->
+		</div><!-- /.container -->
+	</div>
+
+	<div class="main-container" id="main-container">
+		<div class="main-container-inner">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+
+			<div class="sidebar menu-min" id="sidebar">
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- #sidebar-shortcuts -->
+
+				<ul class="nav nav-list">
+					<li class="active">
+						<a href="index.html">
+							<i class="icon-dashboard"></i>
+							<span class="menu-text"> 用户验证 </span>
+						</a>
+					</li>
+					<li>
+						<a href="http://www.zhixunhudong.com/">
+							<i class="icon-globe"></i>
+							<span class="menu-text"> &copy; 智讯互动 </span>
+						</a>
+					</li>
+				</ul><!-- /.nav-list -->
+
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+				</div>
+			</div>
+
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home home-icon"></i>
+							<a href="index.html">首页</a>
+						</li>
+						<li class="active">信息提示</li>
+					</ul><!-- .breadcrumb -->
+
+					<!-- #nav-search -->
+				</div>
+
+				<div class="page-content">
+
+					<div class="row">
+						<div class="col-xs-12">
+							
+							<div class="error-container">
+									<div class="well">
+										<h1 class="grey lighter smaller">
+											<span class="green bigger-125">
+												<i class="icon-check"></i>
+												提交成功！
+											</span>
+										</h1>
+										<hr>
+										<h3 class="lighter smaller">
+											3秒后
+											<i class="icon-desktop icon-animated-wrench bigger-125"></i>
+											自动跳转...
+										</h3>
+
+										<hr>
+
+										<div class="center">
+											<a href="#" class="btn btn-grey">
+												<i class="icon-arrow-left"></i>
+												返回上一页
+											</a>
+
+											<a href="./" class="btn btn-primary">
+												<i class="icon-dashboard"></i>
+												返回首页
+											</a>
+										</div>
+									</div>
+								</div>
+
+						</div>
+					</div>
+
+				</div><!-- /.page-content -->
+			</div><!-- /.main-content -->
+
+		</div><!-- /.main-container-inner -->
+
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+	</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+<!--[if !IE]> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+<!--[if !IE]> -->
+<script type="text/javascript">
+	window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script>
+	if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/typeahead-bs2.min.js"></script>
+<!-- page specific plugin scripts -->
+<script src="assets/js/fuelux/data/fuelux.tree-sampledata.js"></script>
+<script src="assets/js/fuelux/fuelux.tree.min.js"></script>
+<!-- ace scripts -->
+<script src="assets/js/ace-elements.min.js"></script>
+<script src="assets/js/ace.min.js"></script>
+<!-- inline scripts related to this page -->
+
+</body>
+</html>
