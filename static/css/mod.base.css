@@ -1,0 +1,14 @@
+@charset "utf-8";
+/*******************************
+ * Copyright:智讯互动(www.zhixunhudong.com)
+ * Author:Mr.Think
+ * Description:移动端通用基础CSS
+ *******************************/
+q:before, q:after { content:'' }
+.fn-clear:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.fn-clear{*zoom:1;}
+.query-order-box{width:100%;background:#eee;}
+.query-order-box h4{line-height: 1.2;margin:0;}
+.query-order-box h4 span{margin-left:30px;font-size: 14px;font-style: italic;}
+.fn12{font-size: 12px}
+.table-pd5 td,.table-pd5 th{padding: 8px 5px!important}
