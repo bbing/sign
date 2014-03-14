@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2014-03-14 02:02:31
+<?php /* Smarty version Smarty-3.1.13, created on 2014-03-14 08:15:57
          compiled from ".\templates\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:370653216ce3577b83-86623811%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '06f2fd8d9a960ed1fa3c26ccfad67689d23fc229' => 
     array (
       0 => '.\\templates\\index.html',
-      1 => 1394762550,
+      1 => 1394784682,
       2 => 'file',
     ),
   ),
@@ -21,8 +21,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'cate' => 0,
     'catename' => 0,
+    'sign' => 0,
+    'keyword' => 0,
     'userlist' => 0,
     'row' => 0,
+    'page' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -159,36 +162,43 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="col-xs-12">
 							<div class="table-responsive">
 								<div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
-									<div class="row">
-										<div class="col-sm-8">
-											<div id="sample-table-2_length">
-												<label>
-													<select>
-														<option value="0" selected="selected">选择全部</option>
-														<option value="1">签到用户</option>
-														<option value="2">非签到用户</option>
-														<option value="3">其他用户</option>
-													</select>
-												</label>
+									<form method="get" action="">
+										<div class="row">
+											<div class="col-sm-8">
+												<div id="sample-table-2_length">
+													<label>
+														<select name="sign">
+															<option value="" <?php if ($_smarty_tpl->tpl_vars['sign']->value==null){?>selected<?php }?>>用户全部</option>
+															<option value="1" <?php if ($_smarty_tpl->tpl_vars['sign']->value==1){?>selected<?php }?>>签到用户</option>
+															<option value="0" <?php if ($_smarty_tpl->tpl_vars['sign']->value=='0'){?>selected<?php }?>>未签到用户</option>
+														</select>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-4">
+												<div class="input-group">
+													<input class="form-control" name="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" type="text" placeholder="关键词"/>
+													<span class="input-group-btn">
+														<button class="btn btn-sm btn-default" type="submit">
+															<i class="icon-search bigger-110"></i>
+															搜索
+														</button>
+														<a href="export.php?cate=<?php echo $_smarty_tpl->tpl_vars['cate']->value;?>
+&sign=<?php echo $_smarty_tpl->tpl_vars['sign']->value;?>
+&keyword=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" target="_blank" class="btn btn-sm btn-info" type="button" style="margin-left:10px">
+															<i class="icon-hdd bigger-110"></i>
+															导出数据
+														</a>
+													</span>
+												</div>
 											</div>
 										</div>
-										<div class="col-sm-4">
-											<div class="input-group">
-												<input class="form-control" type="text" placeholder="关键词"/>
-												<span class="input-group-btn">
-													<button class="btn btn-sm btn-default" type="button">
-														<i class="icon-search bigger-110"></i>
-														搜索
-													</button>
-													<a href="#" class="btn btn-sm btn-info" type="button" style="margin-left:10px">
-														<i class="icon-hdd bigger-110"></i>
-														导出数据
-													</a>
-												</span>
-											</div>
-										</div>
-									</div>
-
+										<input type="hidden" name="cate" value="<?php echo $_smarty_tpl->tpl_vars['cate']->value;?>
+" />
+										<input type="hidden" name="p" value="1" />
+									</form>
 									<table id="J_userListTab" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
 										<thead>
 											<tr>
@@ -196,7 +206,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 												<th>联系方式</th>
 												<th>对应人</th>
 												<th>对应人类型</th>
-												<th>提交时间</th>
+												<!-- <th>提交时间</th> -->
 												<th>签到</th>
 											</tr>
 										</thead>
@@ -216,10 +226,10 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 </span>
 												</td>
 												<td><?php if ($_smarty_tpl->tpl_vars['row']->value['cname']){?>置业顾问<?php }else{ ?>--<?php }?></td>
-												<td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['row']->value['createtime'],"Y-m-d H:i:s");?>
-</td>
+												<!-- <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['row']->value['createtime'],"Y-m-d H:i:s");?>
+</td> -->
 												<td>
-													<?php if ($_smarty_tpl->tpl_vars['row']->value['isget']==1){?>
+													<?php if ($_smarty_tpl->tpl_vars['row']->value['issign']==1){?>
 													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
 														<i class="icon-ok bigger-120"></i>
 														已签到
@@ -227,75 +237,54 @@ $_smarty_tpl->tpl_vars['row']->_loop = true;
 													<?php }else{ ?>
 													<button class="J_signIn btn btn-xs btn-success" data-id="<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
 ">
-													<i class="icon-ok bigger-120"></i>签到
+														<i class="icon-ok bigger-120"></i>
+														签到
 													<?php }?>
-												</button>
-											</td>
+													</button>
 												</td>
-											</tr>
-											<?php } ?>
-										</tbody>
-									</table>
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="dataTables_info">当前第2页，共21页208条信息</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="dataTables_paginate paging_bootstrap">
-												<ul class="pagination">
-													<li class="prev">
-														<a href="#">
-															<i class="icon-double-angle-left"></i>
-														</a>
-													</li>
-													<li>
-														<a href="#">1</a>
-													</li>
-													<li class="active">
-														<a href="#">2</a>
-													</li>
-													<li>
-														<a href="#">3</a>
-													</li>
-													<li class="next">
-														<a href="#">
-															<i class="icon-double-angle-right"></i>
-														</a>
-													</li>
-												</ul>
-											</div>
+											</td>
+										</tr>
+										<?php } ?>
+									</tbody>
+								</table>
+								<div class="row">
+									<div class="col-sm-8">
+										<div class="dataTables_paginate paging_bootstrap">
+											<ul class="pagination"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</ul>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
-				<!-- /.page-content -->
+
 			</div>
-			<!-- /.main-content -->
-
+			<!-- /.page-content -->
 		</div>
-		<!-- /.main-container-inner -->
+		<!-- /.main-content -->
 
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="icon-double-angle-up icon-only bigger-110"></i>
-		</a>
 	</div>
-	<!-- /.main-container -->
+	<!-- /.main-container-inner -->
 
-	<!-- basic scripts -->
-	<!--[if !IE]>
-	-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<!-- <![endif]-->
-	<!--[if IE]>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<![endif]-->
-	<!--[if !IE]>
-	-->
-	<script type="text/javascript">
+	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		<i class="icon-double-angle-up icon-only bigger-110"></i>
+	</a>
+</div>
+<!-- /.main-container -->
+
+<!-- basic scripts -->
+<!--[if !IE]>
+-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+<!--[if !IE]>
+-->
+<script type="text/javascript">
 	window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");</script>
 <!-- <![endif]-->
 <!--[if IE]>
@@ -329,9 +318,11 @@ $(function(){
 	$('#J_userListTab .J_signIn').on('click',function(){
 		var id=$(this).attr('data-id');
 		var self=this;
-		$.post('#url',{id:id},function(){
+		$.post('api.php',{id:id},function(data){
 			if(data.status==200){
 				$(self).removeClass('btn-success').addClass('btn-grey').html('<i class="icon-ok bigger-120"></i>已签到').prop('disabled',true);
+			} else {
+				alert(data.message);
 			}
 		},'json')
 	});
