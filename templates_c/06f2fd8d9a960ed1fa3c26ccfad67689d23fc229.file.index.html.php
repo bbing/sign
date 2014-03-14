@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2014-03-13 09:40:14
+<?php /* Smarty version Smarty-3.1.13, created on 2014-03-14 02:02:31
          compiled from ".\templates\index.html" */ ?>
 <?php /*%%SmartyHeaderCode:370653216ce3577b83-86623811%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '06f2fd8d9a960ed1fa3c26ccfad67689d23fc229' => 
     array (
       0 => '.\\templates\\index.html',
-      1 => 1394703612,
+      1 => 1394762550,
       2 => 'file',
     ),
   ),
@@ -21,10 +21,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'cate' => 0,
     'catename' => 0,
+    'userlist' => 0,
+    'row' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53216ce35c7f30_04259491')) {function content_53216ce35c7f30_04259491($_smarty_tpl) {?><!doctype html>
+<?php if ($_valid && !is_callable('content_53216ce35c7f30_04259491')) {function content_53216ce35c7f30_04259491($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include 'D:\\APM\\www\\htdocs\\shenyang-sign\\Smarty\\plugins\\modifier.date_format.php';
+?><!doctype html>
 <html>
 <head>
 	<title>带客通签到后台</title>
@@ -189,12 +192,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<table id="J_userListTab" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
 										<thead>
 											<tr>
-												<th class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</th>
 												<th>提交用户</th>
 												<th>联系方式</th>
 												<th>对应人</th>
@@ -204,216 +201,39 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 											</tr>
 										</thead>
 										<tbody>
+											<?php  $_smarty_tpl->tpl_vars['row'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['row']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['userlist']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->key => $_smarty_tpl->tpl_vars['row']->value){
+$_smarty_tpl->tpl_vars['row']->_loop = true;
+?>
 											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
+												<td><?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
+</td>
+												<td><?php echo $_smarty_tpl->tpl_vars['row']->value['phone'];?>
+</td>
 												<td>
-													<span class="orange">王大伟</span>
+													<span class="orange"><?php echo (($tmp = @$_smarty_tpl->tpl_vars['row']->value['cname'])===null||$tmp==='' ? "--" : $tmp);?>
+</span>
 												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
+												<td><?php if ($_smarty_tpl->tpl_vars['row']->value['cname']){?>置业顾问<?php }else{ ?>--<?php }?></td>
+												<td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['row']->value['createtime'],"Y-m-d H:i:s");?>
+</td>
 												<td>
+													<?php if ($_smarty_tpl->tpl_vars['row']->value['isget']==1){?>
 													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
 														<i class="icon-ok bigger-120"></i>
 														已签到
 													</button>
+													<?php }else{ ?>
+													<button class="J_signIn btn btn-xs btn-success" data-id="<?php echo $_smarty_tpl->tpl_vars['row']->value['id'];?>
+">
+													<i class="icon-ok bigger-120"></i>签到
+													<?php }?>
+												</button>
+											</td>
 												</td>
 											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-success" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-success" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-success" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														已签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														已签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														已签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														已签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														已签到
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" class="ace">
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<td>张大兵</td>
-												<td>18899998888</td>
-												<td>
-													<span class="orange">王大伟</span>
-												</td>
-												<td>置业顾问</td>
-												<td>2014-03-12</td>
-												<td>
-													<button class="J_signIn btn btn-xs btn-grey" disabled="desabled" data-id="134">
-														<i class="icon-ok bigger-120"></i>
-														已签到
-													</button>
-												</td>
-											</tr>
+											<?php } ?>
 										</tbody>
 									</table>
 									<div class="row">

@@ -6,6 +6,7 @@
 header("Content-type:text/html;charset=utf-8");
 define('ROOT', dirname(__ROOT__));
 require ROOT . '/category.php';
+require ROOT . '/DB/Mysql.php';
 require_once ROOT . '/Smarty/Smarty.class.php';
 $smarty = new Smarty;
 $smarty->template_dir = ROOT . "/templates";
@@ -32,6 +33,19 @@ $username = $_COOKIE['islogin'];
 $smarty->assign('catename', $catename);
 $smarty->assign('cate', $cate);
 if ($username) {
+	$db = new Mysql(array(
+		'host'          => 'localhost',
+        'username'      => 'root',
+        'password'      => '123456',
+        'dbname'        => 'wit_14minisite',
+        'charset'       => 'utf8'
+	));
+	$count 	= $db->count("select count(1) from sign where md5(projectid)='{$cate}'");
+	$result = $db->query("select * from sign where md5(projectid)='{$cate}'");
+	while ($row = mysql_fetch_assoc($result)) {
+		$userlist[] = $row;
+	}
+	$smarty->assign('userlist', $userlist);
 	$smarty->display('index.html');
 } else {
 	if ($_POST) {
